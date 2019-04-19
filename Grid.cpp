@@ -156,6 +156,41 @@ void Grid::ExecuteAction(ActionType ActType)
 	}
 
 }
+void Grid::ExecuteAction(ActionType ActType, Cell* playerCell) //another version of ExecuteAction (It's needed in some cases)
+{
+	// According to Action Type, create the corresponding action object	
+	switch (ActType)
+	{
+	case LOAD:
+		// Call Load function to load game from a file
+		break;
+
+	case SAVE:
+		// Call Save function to Save current game to a file
+		pGUI->save(playerCell);
+		break;
+
+	case START:	//start game 
+		pGUI->setInterfaceMode(MODE_GAME);
+		break;
+
+	case PAUSE:	//pause game
+		pGUI->setInterfaceMode(MODE_MENU);
+		break;
+
+		///TODO: Add a case for EACH Action type
+	case MOVE_UP:
+	case MOVE_DOWN:
+	case MOVE_RIGHT:
+	case MOVE_LEFT:
+		player->Move(this, ActType);
+		break;
+
+	case STATUS:	// a click on the status bar ==> no action
+		return;
+	}
+
+}
 
 
 Grid::~Grid()
@@ -182,13 +217,7 @@ void Grid::RunApp()
 		ActionType act = GetUserAction();
 		if(act == EXIT)
 			return;
-		if (act == SAVE){
-			cout << "Saving! File name: ";
-			//cin >> FileName;
-			getData(pCell);
-		}
-		
-		ExecuteAction(act);
+		ExecuteAction(act, pCell);
 		
 		Sleep(100);
 	}
@@ -202,13 +231,3 @@ bool Grid::IsValidCell(int row, int col) const
 			&& (col >=0 && col < NumColumnCells);
 }
 /////////////////////////////////////////////////////////////////////////////////////
-void Grid::getData(Cell* pCell){
-	// string f = FileName + ".txt";
-	 // myfile.open(f.c_str());
-	myfile.open("test.txt");
-	int myRow=pCell->getRow();
-	int myColumn = pCell->getCol();
-	cout << "Row= " << myRow << "& Column= " << myColumn;
-	myfile << "Row= " << myRow << "& Column= " << myColumn;
-	myfile.close();
-}
