@@ -1,6 +1,6 @@
 #include "GUI.h"
-
-
+#include <iostream>
+using namespace std;
 GUI::GUI()
 {
 
@@ -286,7 +286,17 @@ void GUI::DrawCell(const Cell * cell) const
 //}
 
 //////////////////////////////////////////////////////////////////////////////////////////
-
+void GUI::save(Cell* myCell){
+	string filey;
+	cout << "Saving! File name: ";
+	cin >> filey;
+	filey = filey + ".txt";
+	myOutputFile.open(filey.c_str());
+	int myRow = myCell->getRow();
+	int myColumn = myCell->getCol();
+	myOutputFile << "Row= " << myRow << "& Column= " << myColumn;
+	myOutputFile.close();
+}
 
 
 
