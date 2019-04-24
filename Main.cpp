@@ -8,7 +8,7 @@ int main()
 {
 	Grid *pGrid= new Grid;
 	pGrid->RunApp();
-
+	// Go on
 	delete pGrid;
 
 	return 0;
