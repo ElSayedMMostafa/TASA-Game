@@ -133,6 +133,7 @@ void Grid::ExecuteAction(ActionType ActType)
 
 	case SAVE:
 		// Call Save function to Save current game to a file
+		//pGUI->save()
 		break;
 
 	case START:	//start game 
@@ -183,7 +184,7 @@ void Grid::RunApp()
 		if(act == EXIT)
 			return;
 		
-		ExecuteAction(act);
+		ExecuteAction(act,pCell);
 		
 		Sleep(100);
 	}
@@ -195,4 +196,41 @@ bool Grid::IsValidCell(int row, int col) const
 {
 	return (row >= 0 && row < NumRowCells) 
 			&& (col >=0 && col < NumColumnCells);
+}
+
+// Creates aother action and executes it [special one made by SAYED to be applicable to use it with SAVING 
+void Grid::ExecuteAction(ActionType ActType, Cell* myCell)
+{
+	// According to Action Type, create the corresponding action object	
+	switch (ActType)
+	{
+	case LOAD:
+		// Call Load function to load game from a file
+		break;
+
+	case SAVE:
+		// Call Save function to Save current game to a file
+		pGUI->save(myCell);
+		break;
+
+	case START:	//start game 
+		pGUI->setInterfaceMode(MODE_GAME);
+		break;
+
+	case PAUSE:	//pause game
+		pGUI->setInterfaceMode(MODE_MENU);
+		break;
+
+		///TODO: Add a case for EACH Action type
+	case MOVE_UP:
+	case MOVE_DOWN:
+	case MOVE_RIGHT:
+	case MOVE_LEFT:
+		player->Move(this, ActType);
+		break;
+
+	case STATUS:	// a click on the status bar ==> no action
+		return;
+	}
+
 }

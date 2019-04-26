@@ -20,7 +20,7 @@ public:
 	ActionType GetUserAction() const; // Reads the input command from the user and returns the corresponding action type
 
 	void ExecuteAction(ActionType) ;  // Creates an action of the passed actionType and executes it
-
+	void ExecuteAction(ActionType ActType, Cell* myCell);
 	void setCell(int r, int c, Cell* pCell);	//updates cell r,c to hold the new pointer pCell
 	
 	bool MoveIfPossible(Cell * pCurrentCell, ActionType dir); // Moves the entered position in the passed direction if no obstacles

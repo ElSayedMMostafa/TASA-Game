@@ -287,11 +287,12 @@ void GUI::DrawCell(const Cell * cell) const
 
 //////////////////////////////////////////////////////////////////////////////////////////
 void GUI::save(Cell* myCell){
-	string filey;
-	cout << "Saving! File name: ";
-	cin >> filey;
-	filey = filey + ".txt";
-	myOutputFile.open(filey.c_str());
+	//string filey;
+	cout << "Saving! File name is SAVED_GAME ";
+	//cin >> filey;
+	//filey = filey + ".txt";
+	//myOutputFile.open(filey.c_str());
+	myOutputFile.open("saved_game.txt");
 	int myRow = myCell->getRow();
 	int myColumn = myCell->getCol();
 	myOutputFile << "Row= " << myRow << "& Column= " << myColumn;
