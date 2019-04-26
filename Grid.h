@@ -1,5 +1,5 @@
 #pragma once
-#include <fstream>
+
 #include "GUI.h"
 #include "DEFS.h"
 #include "Cell.h"
@@ -12,8 +12,7 @@ class Grid
 	Player* player;
 
 public:
-	ofstream myfile;
-	string FileName;
+
 	Grid();	  
 
 	// ========== Action-Related Functions ==========
@@ -36,9 +35,6 @@ public:
 	GUI * getGUI() const;	// Gets a Pointer to the GUI
 
 	~Grid();
-void RunApp();	//Runs the application
-
-private :
-	void getData(Cell* pCell); //shows the data of all the cells on the grid
+	void RunApp();	//Runs the application
 };
 

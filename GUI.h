@@ -1,9 +1,9 @@
 #pragma once
-
+#include <fstream>
 #include "DEFS.h"
 #include "CMUgraphicsLib\CMUgraphics.h"
 #include "Cell.h"
-#include <fstream>
+
 
 
 #define WindowWidth		1100
@@ -63,8 +63,8 @@ private:
 	window *pWind;	// Pointer to the Graphics Window
 
 	GUI_MODE InterfaceMode;
-
 	ofstream myOutputFile;
+
 
 	// Some Static Constant Data Members: ---------------------
 
@@ -87,6 +87,7 @@ private:
 
 public:
 	GUI();
+
 	// ========== Input Functions ==========
 
 	void GetPointClicked(int &x, int &y, bool wait=true) const; // Gets real coordinates (x,y) where user clicks
@@ -124,7 +125,7 @@ public:
 	void CreateGameModeToolBar(); 	// Creates Game mode toolbar menu
 	
 	void PrintMessage(string msg) const;	// Prints a message on Status bar
-	void save(Cell* myCell); // This function is saving the data of the player cells.
+
 	// ========== Game Objects Drawing Functions ==========
 
 	//void DrawObstacle(const Cell & cell) const;	// Draws an obstacle in the passed cell
@@ -133,7 +134,7 @@ public:
 	void DrawCell(const Cell *cell) const;		//Draws a cell
 	                                                              // This will be used to draw a game object (enemy, player, friendlyItem, ...etc.)
 	void ClearCell(const Cell & cell) const; // Clears a cell from any drawings ( Reset it to empty cell  )
-	
+	void save(Cell* myCell); // This function is saving the data of the player cells.
 	~GUI();
 };
 

@@ -1,6 +1,6 @@
 #include "GUI.h"
 #include <iostream>
-using namespace std;
+
 GUI::GUI()
 {
 
@@ -212,13 +212,13 @@ void GUI::ClearGridArea() const
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 
-void GUI::CreateMenu() 
+void GUI::CreateMenu()
 {
 	InterfaceMode = MODE_MENU;
 
 	// You can draw the tool bar icons in any way you want.
 	// Below is one possible way
-	
+
 	// First prepare List of images for each menu item
 	// To control the order of these images in the menu, 
 	// reoder them in UI_Info.h ==> enum MENU_ITEMS
@@ -230,17 +230,17 @@ void GUI::CreateMenu()
 	MenuItemImages[ITM_ENEMY] = "images\\MenuItems\\enemy.jpg";
 	MenuItemImages[ITM_DATE] = "images\\MenuItems\\dates.jpg";
 	MenuItemImages[ITM_OBS] = "images\\MenuItems\\obstacle.jpg";
-	
-	
+
+
 	///TODO: Prepare images for each menu item and add it to the list
 
 	// Draw menu item one image at a time
-	for(int i=0; i<MENU_ITM_COUNT; i++)
+	for (int i = 0; i<MENU_ITM_COUNT; i++)
 		pWind->DrawImage(MenuItemImages[i], i*MenuItemWidth, 0, MenuItemWidth, ToolBarHeight);
 
 	// Draw a line under the toolbar
 	pWind->SetPen(RED, 3);
-	pWind->DrawLine(0, ToolBarHeight, WindWidth, ToolBarHeight);	
+	pWind->DrawLine(0, ToolBarHeight, WindWidth, ToolBarHeight);
 
 }
 
