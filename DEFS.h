@@ -17,6 +17,7 @@ enum ActionType // The actions supported (you can add more if needed)
 	ENEMY, //
 	DATEE,
 	OBSTACLE,
+	goal,
 
 	//  Player move direction 
 	MOVE_UP,
