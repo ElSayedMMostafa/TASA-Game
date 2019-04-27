@@ -233,7 +233,7 @@ void GUI::CreateMenu()
 	MenuItemImages[ITM_ENEMY] = "images\\MenuItems\\enemy.jpg";
 	MenuItemImages[ITM_DATE] = "images\\MenuItems\\dates.jpg";
 	MenuItemImages[ITM_OBS] = "images\\MenuItems\\obstacle.jpg";
-
+	MenuItemImages[ITM_goal] = "images\\MenuItems\\goal.jpg";
 
 	///TODO: Prepare images for each menu item and add it to the list
 
