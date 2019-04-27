@@ -239,7 +239,7 @@ void Grid::ExecuteAction(ActionType ActType, Cell* myCell)
 	case OBSTACLE:
 	case DATEE:
 	case ENEMY:
-		//pGUI->setInterfaceMode(MODE_MENU);
+		pGUI->setInterfaceMode(MODE_MENU);
 		pGUI->PrintMessage("Choose The Desired Cell");
 		pGUI->GetPointClicked(x, y);
 		desiredRow = (y - ToolBarHeight) / GridCellWidth;
