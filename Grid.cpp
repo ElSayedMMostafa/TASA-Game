@@ -6,6 +6,7 @@
 #include "EnemyCell.h"
 #include "ObstacleCell.h"
 #include "DateCell.h"
+#include "goalCell.h"
 Grid::Grid() 
 {
 	// initializes all the GameObject pointer of the List to NULL
@@ -84,11 +85,6 @@ bool Grid::MoveIfPossible(Cell* pCurrentCell, ActionType dir)
 
 	return true;
 }
-void Grid::getClickedCell(){
-	pGUI->GetPointClicked(x, y);
-	desiredRow = (y - ToolBarHeight) / GridCellWidth;
-	desiredColumn = x / GridCellWidth;
-}
 
 void Grid::DrawAllCells() const	
 {
@@ -150,6 +146,7 @@ void Grid::ExecuteAction(ActionType ActType)
 		pGUI->setInterfaceMode(MODE_MENU);
 		break;
 
+
 	///TODO: Add a case for EACH Action type
 	case MOVE_UP:
 	case MOVE_DOWN:
@@ -203,6 +200,10 @@ void Grid::RunApp()
 			ObstacleCell *obstacle = new ObstacleCell(desiredRow, desiredColumn);
 			pGUI->DrawCell(obstacle);
 		}
+		else if (act == goal){
+			goalCell *goal = new goalCell(desiredRow, desiredColumn);
+			pGUI->DrawCell(goal);
+		}
 		Sleep(100);
 	}
 
@@ -213,6 +214,12 @@ bool Grid::IsValidCell(int row, int col) const
 {
 	return (row >= 0 && row < NumRowCells) 
 			&& (col >=0 && col < NumColumnCells);
+}
+
+void Grid::getClickedCell(){
+	pGUI->GetPointClicked(x, y);
+	desiredRow = (y - ToolBarHeight) / GridCellWidth;
+	desiredColumn = x / GridCellWidth;
 }
 
 // Creates aother action and executes it [special one made by SAYED to be applicable to use it with SAVING 
@@ -237,13 +244,13 @@ void Grid::ExecuteAction(ActionType ActType, Cell* myCell)
 	case PAUSE:	//pause game
 		pGUI->setInterfaceMode(MODE_MENU);
 		break;
-	
 	case OBSTACLE:
 	case DATEE:
 	case ENEMY: 
+	case goal:
 		pGUI->setInterfaceMode(MODE_MENU);
 		pGUI->PrintMessage("Choose The Desired Cell");
-		getClickedCell()
+		getClickedCell();
 		break;
 		
 		///TODO: Add a case for EACH Action type
