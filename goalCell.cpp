@@ -1,11 +1,11 @@
-#include "goalCell.h"
+#include "GoalCell.h"
 
-goalCell::goalCell(int r, int c) :Cell(r, c){
+GoalCell::GoalCell(int r, int c) :Cell(r, c){
 	SetRow(r);
 	SetCol(c);
 	ImagePath = "images\\MenuItems\\goal.jpg";
 }
-bool goalCell::ActOn(Player* p){
+bool GoalCell::ActOn(Player* p){
 	// to be edited..
 	return true;
 }

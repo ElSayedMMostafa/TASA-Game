@@ -33,7 +33,9 @@ enum MENU_ITEMS // The items of the Creat Grid Mode (you should add more items)
 	ITM_ENEMY,
 	ITM_DATE,
 	ITM_OBS,
-	ITM_goal,
+	ITM_GOAL,
+	ITM_HOLE,
+	
 
 	///TODO: Add more items names here
 

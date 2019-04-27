@@ -7,6 +7,7 @@
 #include "ObstacleCell.h"
 #include "DateCell.h"
 #include "goalCell.h"
+#include "HoleCell.h"
 Grid::Grid()
 {
 	// initializes all the GameObject pointer of the List to NULL
@@ -200,10 +201,15 @@ void Grid::RunApp()
 			ObstacleCell *obstacle = new ObstacleCell(desiredRow, desiredColumn);
 			pGUI->DrawCell(obstacle);
 		}
-		else if (act == goal){
-			goalCell *goal = new goalCell(desiredRow, desiredColumn);
+		else if (act == GOAL){
+			GoalCell *goal = new GoalCell(desiredRow, desiredColumn);
 			pGUI->DrawCell(goal);
 		}
+		else if (act == HOLE){
+			HoleCell *hole = new HoleCell(desiredRow, desiredColumn);
+			pGUI->DrawCell(hole);
+		}
+		pGUI->PrintMessage(" ");
 		Sleep(100);
 	}
 
@@ -247,7 +253,8 @@ void Grid::ExecuteAction(ActionType ActType, Cell* myCell)
 	case OBSTACLE:
 	case DATEE:
 	case ENEMY:
-	case goal:
+	case GOAL:
+	case HOLE:
 		pGUI->setInterfaceMode(MODE_MENU);
 		pGUI->PrintMessage("Choose The Desired Cell");
 		getClickedCell();

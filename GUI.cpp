@@ -105,6 +105,8 @@ ActionType GUI::GetUserAction() const
 			case ITM_ENEMY: return ENEMY;
 			case ITM_OBS: return OBSTACLE;
 			case ITM_DATE: return DATEE;
+			case ITM_GOAL: return GOAL;
+			case ITM_HOLE: return HOLE;
 			case ITM_EXIT: return EXIT;
 
 			///TODO: Add cases for the other items of Create-Grid Mode
@@ -233,7 +235,9 @@ void GUI::CreateMenu()
 	MenuItemImages[ITM_ENEMY] = "images\\MenuItems\\enemy.jpg";
 	MenuItemImages[ITM_DATE] = "images\\MenuItems\\dates.jpg";
 	MenuItemImages[ITM_OBS] = "images\\MenuItems\\obstacle.jpg";
-	MenuItemImages[ITM_goal] = "images\\MenuItems\\goal.jpg";
+	MenuItemImages[ITM_GOAL] = "images\\MenuItems\\goal.jpg";
+	MenuItemImages[ITM_HOLE] = "images\\MenuItems\\hole.jpg";
+
 
 	///TODO: Prepare images for each menu item and add it to the list
 
