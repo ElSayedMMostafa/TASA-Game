@@ -145,9 +145,6 @@ void Grid::ExecuteAction(ActionType ActType)
 		pGUI->setInterfaceMode(MODE_MENU);
 		break;
 
-	case ENEMY:
-		cout << "It's enemy dude" << endl;
-
 	///TODO: Add a case for EACH Action type
 	case MOVE_UP:
 	case MOVE_DOWN:
@@ -239,6 +236,8 @@ void Grid::ExecuteAction(ActionType ActType, Cell* myCell)
 	case OBSTACLE:
 	case DATEE:
 	case ENEMY: 
+		pGUI->setInterfaceMode(MODE_MENU);
+		pGUI->PrintMessage("Choose The Desired Cell");
 		pGUI->GetPointClicked(x, y);
 		desiredRow = (y - ToolBarHeight) / GridCellWidth;
 		desiredColumn = x / GridCellWidth;
