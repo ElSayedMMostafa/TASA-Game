@@ -14,7 +14,7 @@ GUI::GUI()
 	ObstacleColor = BLACK;       // Background of Obstacles
 	
 	// Create the output window
-	pWind = new window(WindWidth + 15, WindHeight, 5, 5); 
+    pWind = new window(WindWidth + 15, WindHeight, 5, 5); 
 
 	// Change the title
 	pWind->ChangeTitle("Game");
@@ -102,6 +102,9 @@ ActionType GUI::GetUserAction() const
 				pWind->FlushKeyQueue();
 				pWind->FlushMouseQueue();
 				return START;
+			case ITM_ENEMY: return ENEMY;
+			case ITM_OBS: return OBSTACLE;
+			case ITM_DATE: return DATEE;
 			case ITM_EXIT: return EXIT;
 
 			///TODO: Add cases for the other items of Create-Grid Mode

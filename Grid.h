@@ -12,7 +12,8 @@ class Grid
 	Player* player;
 
 public:
-
+	int x, y; //For locations
+	int desiredRow, desiredColumn;
 	Grid();	  
 
 	// ========== Action-Related Functions ==========

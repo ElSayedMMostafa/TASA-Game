@@ -1,10 +1,11 @@
 #include "Grid.h"
-
+#include <iostream>
 #include "Player.h"
 #include "EmptyCell.h"
 #include "PlayerCell.h"
-
-
+#include "EnemyCell.h"
+#include "ObstacleCell.h"
+#include "DateCell.h"
 Grid::Grid() 
 {
 	// initializes all the GameObject pointer of the List to NULL
@@ -144,6 +145,9 @@ void Grid::ExecuteAction(ActionType ActType)
 		pGUI->setInterfaceMode(MODE_MENU);
 		break;
 
+	case ENEMY:
+		cout << "It's enemy dude" << endl;
+
 	///TODO: Add a case for EACH Action type
 	case MOVE_UP:
 	case MOVE_DOWN:
@@ -185,7 +189,18 @@ void Grid::RunApp()
 			return;
 		
 		ExecuteAction(act,pCell);
-		
+		if (act == ENEMY){
+			EnemyCell *enemy = new EnemyCell(desiredRow, desiredColumn);
+			pGUI->DrawCell(enemy);
+		}
+		else if (act == DATEE){
+			DateCell *datee = new DateCell(desiredRow, desiredColumn);
+			pGUI->DrawCell(datee);
+		}
+		else if (act == OBSTACLE){
+			ObstacleCell *obstacle = new ObstacleCell(desiredRow, desiredColumn);
+			pGUI->DrawCell(obstacle);
+		}
 		Sleep(100);
 	}
 
@@ -220,7 +235,15 @@ void Grid::ExecuteAction(ActionType ActType, Cell* myCell)
 	case PAUSE:	//pause game
 		pGUI->setInterfaceMode(MODE_MENU);
 		break;
-
+	
+	case OBSTACLE:
+	case DATEE:
+	case ENEMY: 
+		pGUI->GetPointClicked(x, y);
+		desiredRow = (y - ToolBarHeight) / GridCellWidth;
+		desiredColumn = x / GridCellWidth;
+		break;
+		
 		///TODO: Add a case for EACH Action type
 	case MOVE_UP:
 	case MOVE_DOWN:

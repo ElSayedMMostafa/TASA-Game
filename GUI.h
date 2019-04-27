@@ -58,10 +58,8 @@ enum GAME_ITEMS // The items of the Game Mode (you should add more items)
 //This class is responsible for getting all user input and drawing game objects
 class GUI
 {
-
 private:
-	window *pWind;	// Pointer to the Graphics Window
-
+	window *pWind;	// Pointer to the Graphics Window 
 	GUI_MODE InterfaceMode;
 	ofstream myOutputFile;
 

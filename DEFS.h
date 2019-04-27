@@ -14,6 +14,9 @@ enum ActionType // The actions supported (you can add more if needed)
 	START,	// Start the game
 	PAUSE,	//Pause the game
 	EXIT,	// Exit Application
+	ENEMY, //
+	DATEE,
+	OBSTACLE,
 
 	//  Player move direction 
 	MOVE_UP,
