@@ -84,6 +84,11 @@ bool Grid::MoveIfPossible(Cell* pCurrentCell, ActionType dir)
 
 	return true;
 }
+void Grid::getClickedCell(){
+	pGUI->GetPointClicked(x, y);
+	desiredRow = (y - ToolBarHeight) / GridCellWidth;
+	desiredColumn = x / GridCellWidth;
+}
 
 void Grid::DrawAllCells() const	
 {
@@ -238,9 +243,7 @@ void Grid::ExecuteAction(ActionType ActType, Cell* myCell)
 	case ENEMY: 
 		pGUI->setInterfaceMode(MODE_MENU);
 		pGUI->PrintMessage("Choose The Desired Cell");
-		pGUI->GetPointClicked(x, y);
-		desiredRow = (y - ToolBarHeight) / GridCellWidth;
-		desiredColumn = x / GridCellWidth;
+		getClickedCell()
 		break;
 		
 		///TODO: Add a case for EACH Action type
