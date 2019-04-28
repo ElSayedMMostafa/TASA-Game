@@ -8,6 +8,10 @@
 #include "DateCell.h"
 #include "goalCell.h"
 #include "HoleCell.h"
+#include "LifeCell.h"
+#include "VirusCell.h"
+#include "EmptyCell.h"
+
 Grid::Grid()
 {
 	// initializes all the GameObject pointer of the List to NULL
@@ -209,6 +213,22 @@ void Grid::RunApp()
 			HoleCell *hole = new HoleCell(desiredRow, desiredColumn);
 			pGUI->DrawCell(hole);
 		}
+		else if (act == LIFE){
+			LifeCell *life = new LifeCell(desiredRow, desiredColumn);
+			pGUI->DrawCell(life);
+		}
+		else if (act == VIRUS){
+			VirusCell *virus = new VirusCell(desiredRow, desiredColumn);
+			pGUI->DrawCell(virus);
+		}
+		else if (act == EMPTY){
+			EmptyCell *empty = new EmptyCell(desiredRow, desiredColumn);
+			pGUI->DrawCell(empty);
+		}
+		else if (act == PLAYER){
+			PlayerCell *player = new PlayerCell(desiredRow, desiredColumn);
+			pGUI->DrawCell(player);
+		}
 		pGUI->PrintMessage(" ");
 		Sleep(100);
 	}
@@ -255,6 +275,10 @@ void Grid::ExecuteAction(ActionType ActType, Cell* myCell)
 	case ENEMY:
 	case GOAL:
 	case HOLE:
+	case LIFE:
+	case VIRUS:
+	case EMPTY:
+	case PLAYER:
 		pGUI->setInterfaceMode(MODE_MENU);
 		pGUI->PrintMessage("Choose The Desired Cell");
 		getClickedCell();

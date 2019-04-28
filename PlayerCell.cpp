@@ -3,7 +3,7 @@
 
 PlayerCell::PlayerCell(int row, int col):Cell(row,col)
 {
-	ImagePath = "images\\Cells\\PlayerCell.jpg";
+	ImagePath = "images\\MenuItems\\Player.jpg";
 }
 
 

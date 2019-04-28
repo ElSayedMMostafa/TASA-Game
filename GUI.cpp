@@ -107,10 +107,13 @@ ActionType GUI::GetUserAction() const
 			case ITM_DATE: return DATEE;
 			case ITM_GOAL: return GOAL;
 			case ITM_HOLE: return HOLE;
+			case ITM_LIFE: return LIFE;
+			case ITM_VIRUS: return VIRUS;
+			case ITM_PLAYER: return PLAYER;
 			case ITM_EXIT: return EXIT;
 
 			///TODO: Add cases for the other items of Create-Grid Mode
-
+			case ITM_EMPTY: return EMPTY;
 			default: return EMPTY;	// A click on empty place in toolbar
 			}
 		}
@@ -237,6 +240,12 @@ void GUI::CreateMenu()
 	MenuItemImages[ITM_OBS] = "images\\MenuItems\\obstacle.jpg";
 	MenuItemImages[ITM_GOAL] = "images\\MenuItems\\goal.jpg";
 	MenuItemImages[ITM_HOLE] = "images\\MenuItems\\hole.jpg";
+	MenuItemImages[ITM_LIFE] = "images\\MenuItems\\life.jpg";
+	MenuItemImages[ITM_VIRUS] = "images\\MenuItems\\virus.jpg";
+	MenuItemImages[ITM_EMPTY] = "images\\MenuItems\\EmptyCell.jpg";
+	MenuItemImages[ITM_PLAYER] = "images\\MenuItems\\Player.jpg";
+
+
 
 
 	///TODO: Prepare images for each menu item and add it to the list
