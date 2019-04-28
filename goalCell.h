@@ -1,4 +1,5 @@
 #include "Cell.h"
+// GoalCell is a type of cell. The player aims to reach this cell to finish his level.
 
 class GoalCell : public Cell {
 public:

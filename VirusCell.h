@@ -1,4 +1,6 @@
 #include "Cell.h"
+// VirusCell is a type of cell. When the player passes by this cell, his directions will differ form what he actually need;
+// For example, if the user clicks FORWARD, he will move to right (This will be randomly assigned).
 
 class VirusCell : public Cell {
 public:

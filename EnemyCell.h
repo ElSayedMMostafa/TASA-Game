@@ -1,4 +1,5 @@
 #include "Cell.h"
+// EnemyCell is a type of cell. When the player passes by this cell, he dies;
 
 class EnemyCell : public Cell {
 public:
