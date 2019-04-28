@@ -195,38 +195,47 @@ void Grid::RunApp()
 		ExecuteAction(act, pCell);
 		if (act == ENEMY){
 			EnemyCell *enemy = new EnemyCell(desiredRow, desiredColumn);
+			setCell(desiredRow, desiredColumn, enemy);
 			pGUI->DrawCell(enemy);
 		}
 		else if (act == DATEE){
 			DateCell *datee = new DateCell(desiredRow, desiredColumn);
+			setCell(desiredRow, desiredColumn, datee);
 			pGUI->DrawCell(datee);
 		}
 		else if (act == OBSTACLE){
 			ObstacleCell *obstacle = new ObstacleCell(desiredRow, desiredColumn);
+			setCell(desiredRow, desiredColumn, obstacle);
 			pGUI->DrawCell(obstacle);
 		}
 		else if (act == GOAL){
 			GoalCell *goal = new GoalCell(desiredRow, desiredColumn);
+			setCell(desiredRow, desiredColumn, goal);
 			pGUI->DrawCell(goal);
 		}
 		else if (act == HOLE){
 			HoleCell *hole = new HoleCell(desiredRow, desiredColumn);
+			setCell(desiredRow, desiredColumn, hole);
 			pGUI->DrawCell(hole);
 		}
 		else if (act == LIFE){
 			LifeCell *life = new LifeCell(desiredRow, desiredColumn);
+			setCell(desiredRow, desiredColumn, life);
 			pGUI->DrawCell(life);
 		}
 		else if (act == VIRUS){
 			VirusCell *virus = new VirusCell(desiredRow, desiredColumn);
+			setCell(desiredRow, desiredColumn, virus);
 			pGUI->DrawCell(virus);
 		}
 		else if (act == EMPTY){
 			EmptyCell *empty = new EmptyCell(desiredRow, desiredColumn);
+			setCell(desiredRow, desiredColumn, empty);
 			pGUI->DrawCell(empty);
 		}
 		else if (act == PLAYER){
 			PlayerCell *player = new PlayerCell(desiredRow, desiredColumn);
+			setCell(desiredRow, desiredColumn, player);
 			pGUI->DrawCell(player);
 		}
 		pGUI->PrintMessage(" ");
