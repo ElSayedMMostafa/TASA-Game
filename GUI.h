@@ -139,7 +139,6 @@ public:
 	void DrawCell(const Cell *cell) const;		//Draws a cell
 	                                                              // This will be used to draw a game object (enemy, player, friendlyItem, ...etc.)
 	void ClearCell(const Cell & cell) const; // Clears a cell from any drawings ( Reset it to empty cell  )
-	void save(Cell* myCell); // This function is saving the data of the player cells.
 	~GUI();
 };
 

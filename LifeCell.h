@@ -4,6 +4,10 @@
 
 class LifeCell : public Cell {
 public:
+	static int number_of_lifes;
+
 	LifeCell(int r, int c); //default constructor
 	bool ActOn(Player* p);
+	void Save(ofstream &f);
+
 };

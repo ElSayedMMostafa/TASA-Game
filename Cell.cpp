@@ -72,6 +72,11 @@ bool Cell::ActOn(Player* p)
 	return true;	
 
 }
+void Cell::Save(ofstream &f){
+
+	f << "TRY" << endl;
+}
+
 
 Cell::~Cell()
 {}

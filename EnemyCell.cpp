@@ -1,6 +1,7 @@
 #include "EnemyCell.h"
-
+int EnemyCell::number_of_enemies = 0;
 EnemyCell::EnemyCell(int r, int c):Cell(r,c){
+	number_of_enemies++;
 	SetRow(r);
 	SetCol(c);
 	ImagePath = "images\\MenuItems\\enemy.jpg";
@@ -8,4 +9,9 @@ EnemyCell::EnemyCell(int r, int c):Cell(r,c){
 bool EnemyCell::ActOn(Player* p){
 	// to be edited..
 	return true;
+}
+
+void EnemyCell::Save(ofstream &f){
+	f << "Enemy Cell" << '\t' << getRow() + 1 << '\t' << getCol() + 1 << endl;
+
 }

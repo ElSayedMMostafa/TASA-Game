@@ -179,64 +179,75 @@ Grid::~Grid()
 
 void Grid::RunApp()
 {
-
+	
 	int row = 7, col = 12;
 	PlayerCell* pCell = new PlayerCell(row, col);
 	setCell(row, col, pCell);
 	player = new Player(*pCell);
 	pGUI->DrawCell(pCell);
 
+	EnemyCell* enemy[100]; DateCell* datee[100]; ObstacleCell* obstacle[100]; GoalCell* goal[100]; HoleCell* hole[100]; LifeCell* life[100];
+	VirusCell* virus[100]; EmptyCell* empty[100]; PlayerCell* player[100];
 	while (1)
 	{
+		static int iEnemy = -1, iDate = -1, iObstacel = -1, iHole = -1, iGoal = -1, iPlayer = -1, iVirus = -1, iLife = -1, iEmpty = -1;
 		ActionType act = GetUserAction();
 		if (act == EXIT)
 			return;
-
 		ExecuteAction(act, pCell);
 		if (act == ENEMY){
-			EnemyCell *enemy = new EnemyCell(desiredRow, desiredColumn);
-			setCell(desiredRow, desiredColumn, enemy);
-			pGUI->DrawCell(enemy);
+			iEnemy++;
+			enemy[iEnemy] = new EnemyCell(desiredRow, desiredColumn);
+			setCell(desiredRow, desiredColumn, enemy[iEnemy]);
+			pGUI->DrawCell(enemy[iEnemy]);
 		}
 		else if (act == DATEE){
-			DateCell *datee = new DateCell(desiredRow, desiredColumn);
-			setCell(desiredRow, desiredColumn, datee);
-			pGUI->DrawCell(datee);
+			iDate++;
+			datee[iDate] = new DateCell(desiredRow, desiredColumn);
+			setCell(desiredRow, desiredColumn, datee[iDate]);
+			pGUI->DrawCell(datee[iDate]);
 		}
 		else if (act == OBSTACLE){
-			ObstacleCell *obstacle = new ObstacleCell(desiredRow, desiredColumn);
-			setCell(desiredRow, desiredColumn, obstacle);
-			pGUI->DrawCell(obstacle);
+			iObstacel++;
+			obstacle[iObstacel] = new ObstacleCell(desiredRow, desiredColumn);
+			setCell(desiredRow, desiredColumn, obstacle[iObstacel]);
+			pGUI->DrawCell(obstacle[iObstacel]);
 		}
 		else if (act == GOAL){
-			GoalCell *goal = new GoalCell(desiredRow, desiredColumn);
-			setCell(desiredRow, desiredColumn, goal);
-			pGUI->DrawCell(goal);
+			iGoal++;
+			goal[iGoal] = new GoalCell(desiredRow, desiredColumn);
+			setCell(desiredRow, desiredColumn, goal[iGoal]);
+			pGUI->DrawCell(goal[iGoal]);
 		}
 		else if (act == HOLE){
-			HoleCell *hole = new HoleCell(desiredRow, desiredColumn);
-			setCell(desiredRow, desiredColumn, hole);
-			pGUI->DrawCell(hole);
+			iHole++;
+			hole[iHole] = new HoleCell(desiredRow, desiredColumn);
+			setCell(desiredRow, desiredColumn, hole[iHole]);
+			pGUI->DrawCell(hole[iHole]);
 		}
 		else if (act == LIFE){
-			LifeCell *life = new LifeCell(desiredRow, desiredColumn);
-			setCell(desiredRow, desiredColumn, life);
-			pGUI->DrawCell(life);
+			iLife++;
+			life[iLife] = new LifeCell(desiredRow, desiredColumn);
+			setCell(desiredRow, desiredColumn, life[iLife]);
+			pGUI->DrawCell(life[iLife]);
 		}
 		else if (act == VIRUS){
-			VirusCell *virus = new VirusCell(desiredRow, desiredColumn);
-			setCell(desiredRow, desiredColumn, virus);
-			pGUI->DrawCell(virus);
+			iVirus++;
+			virus[iVirus] = new VirusCell(desiredRow, desiredColumn);
+			setCell(desiredRow, desiredColumn, virus[iVirus]);
+			pGUI->DrawCell(virus[iVirus]);
 		}
 		else if (act == EMPTY){
-			EmptyCell *empty = new EmptyCell(desiredRow, desiredColumn);
-			setCell(desiredRow, desiredColumn, empty);
-			pGUI->DrawCell(empty);
+			iEmpty++;
+			empty[iEmpty] = new EmptyCell(desiredRow, desiredColumn);
+			setCell(desiredRow, desiredColumn, empty[iEmpty]);
+			pGUI->DrawCell(empty[iEmpty]);
 		}
 		else if (act == PLAYER){
-			PlayerCell *player = new PlayerCell(desiredRow, desiredColumn);
-			setCell(desiredRow, desiredColumn, player);
-			pGUI->DrawCell(player);
+			iPlayer++;
+			player[iPlayer] = new PlayerCell(desiredRow, desiredColumn);
+			setCell(desiredRow, desiredColumn, player[iPlayer]);
+			pGUI->DrawCell(player[iPlayer]);
 		}
 		pGUI->PrintMessage(" ");
 		Sleep(100);
@@ -269,7 +280,7 @@ void Grid::ExecuteAction(ActionType ActType, Cell* myCell)
 
 	case SAVE:
 		// Call Save function to Save current game to a file
-		pGUI->save(myCell);
+		SaveAll();
 		break;
 
 	case START:	//start game 
@@ -281,7 +292,7 @@ void Grid::ExecuteAction(ActionType ActType, Cell* myCell)
 		break;
 	case OBSTACLE:
 	case DATEE:
-	case ENEMY:
+	case ENEMY:             
 	case GOAL:
 	case HOLE:
 	case LIFE:
@@ -305,4 +316,27 @@ void Grid::ExecuteAction(ActionType ActType, Cell* myCell)
 		return;
 	}
 
+}
+void Grid::SaveAll(){
+	ofstream of; string filename;
+	cout << "Choose the name of the file [add .txt]: ";
+	cin >> filename;
+	of.open(filename); //Open the file to write in  
+	of << "Player Information" << endl;
+	int numberOfNECells = PlayerCell::number_of_players + GoalCell::number_of_goals + HoleCell::number_of_holes + ObstacleCell::number_of_obstacles +
+		DateCell::number_of_dates + EnemyCell::number_of_enemies + LifeCell::number_of_lifes + VirusCell::number_of_viruses;
+	of << "Number of non-empty Cells = " << numberOfNECells << endl;
+	for (int i = 0; i < NumRowCells; i++)
+	{
+		for (int j = 0; j < NumColumnCells; j++)
+		{
+			if (GameCells[i][j]) // not null;
+			{
+				GameCells[i][j]->Save(of);
+			}
+		}
+	}
+	
+
+	
 }

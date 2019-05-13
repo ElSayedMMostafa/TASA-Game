@@ -3,6 +3,10 @@
 
 class HoleCell : public Cell {
 public:
+	static int number_of_holes;
+
 	HoleCell(int r, int c); //default constructor
 	bool ActOn(Player* p);
+	void Save(ofstream &f);
+
 };

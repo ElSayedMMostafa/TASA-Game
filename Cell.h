@@ -1,5 +1,6 @@
 #pragma once 
 #include <string>
+#include <fstream>
 using namespace std;
 
 	// note: this class does NOT deal with real coordinates, it deals with the cell number instead
@@ -44,7 +45,8 @@ public:
 	
 	bool operator == (const Cell & other) const; // Operator Overloading : Check if the passed cell equals the current cell
 	bool operator != (const Cell & other) const; // Operator Overloading : Check if the passed cell does NOT equal the current cell
-
+	
+	virtual void Save(ofstream &f);
 	virtual ~Cell();
 
 };

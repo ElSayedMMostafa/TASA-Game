@@ -37,5 +37,8 @@ public:
 
 	~Grid();
 	void RunApp();	//Runs the application
+	void SaveAll(); // 
+private: 
+	
 };
 
