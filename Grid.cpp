@@ -192,9 +192,9 @@ void Grid::RunApp()
 	{
 		static int iEnemy = -1, iDate = -1, iObstacle = -1, iHole = -1, iGoal = -1, iPlayer = -1, iVirus = -1, iLife = -1, iEmpty = -1;
 		ActionType act = GetUserAction();
+		ExecuteAction(act, pCell);
 		if (act == EXIT)
 			return;
-		ExecuteAction(act, pCell);
 		if (act == ENEMY){
 			iEnemy++;
 			enemy[iEnemy] = new EnemyCell(desiredRow, desiredColumn);
@@ -338,13 +338,22 @@ void Grid::getClickedCell(){
 // Creates aother action and executes it [special one made by SAYED to be applicable to use it with SAVING 
 void Grid::ExecuteAction(ActionType ActType, Cell* myCell)
 {
+	char YorN;
 	// According to Action Type, create the corresponding action object	
 	switch (ActType)
 	{
 	case LOAD:
 		// Call Load function to load game from a file
 		break;
-
+	case EXIT:
+		cout << "Would you like to save the recent game?(Y/N): " ;
+		cin >> YorN;
+		if (YorN =='Y' || YorN =='y') //the user needs to SAVE
+		{
+			SaveAll();
+		}
+		deleteTheCells();
+		break;
 	case SAVE:
 		// Call Save function to Save current game to a file
 		SaveAll();
@@ -401,6 +410,7 @@ void Grid::SaveAll(){
 				GameCells[i][j]->Save(of);
 		}
 	}
+	cout << "Done! The game is saved." << endl;
 }
 
 void Grid::deleteTheCells(){
