@@ -12,6 +12,7 @@ class Grid
 	Player* player;
 
 public:
+	static int iEnemy, iDate, iObstacle, iHole, iGoal, iPlayer, iVirus, iLife, iEmpty;
 	int x, y; //For locations
 	int desiredRow, desiredColumn;
 	Grid();	  
@@ -38,6 +39,8 @@ public:
 	~Grid();
 	void RunApp();	//Runs the application
 	void SaveAll(); // 
+	//void Load(); // For load Operation OF COURSE
+	void deleteTheCells(); // We'll use it in LOADING to delete all the available cells before loading
 private: 
 	
 };
